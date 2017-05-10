@@ -1,0 +1,6 @@
+<h1>Recipes by rating</h1>
+<ul>
+  <% @recipes_by_rating.each() do |recipe| %>
+    <li><%= recipe.rating %> <%= recipe.name %></li>
+  <% end %>
+</ul>

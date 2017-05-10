@@ -1,0 +1,12 @@
+
+
+<% if @instructions.any?() %>
+<h1>These are the recipes</h1>
+<ul>
+  <% @instructions.each() do |instruction| %>
+    <li><%= instruction.name %> </li>
+  <% end %>
+</ul>
+<% else %>
+<h4>Nothing yet! Add new recipes!</h4>
+<% end %>

@@ -1,0 +1,23 @@
+<div class="container">
+  <a href="/">Home Page</a>
+  <a href="/instructions/<%= @instruction.id %>/edit" role="button" class="btn btn-danger">Edit</a>
+
+
+  <form action="/recipes/<%= @instruction.id %>/add_tag" method="post">
+    <h3>Add a tag for <%= @instruction.description() %></h3>
+    <div class="form-group">
+      <input id="instruction_id" name="instruction_id" type="hidden" value="<%= @instruction.id() %>">
+      <label for="description">Tag: </label>
+      <input id="description" name="description" type="text"  class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+
+  <h3>Tags</h3>
+  <ul>
+    <% @instruction.tags.each() do |tag| %>
+      <li> <a href="/tags/<%= tag.id %>"><%= tag.description %></a></li>
+    <% end %>
+  </ul>
+
+</div>
