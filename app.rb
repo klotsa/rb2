@@ -72,3 +72,9 @@ get('/recipes_by_rating') do
   @instructions = Instruction.order(rating: :desc)
   erb(:recipes_by_rating)
 end
+
+delete('/recipes/:id/remove_from_instruction/:ingredient_id') do
+  @ingredient = Ingredient.find(params.fetch('ingredient_id').to_i())
+  @instruction = Instruction.find(params.fetch('id').to_i())
+  @instruction.ingredients.delete(@ingredient)
+end
