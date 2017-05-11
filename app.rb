@@ -25,3 +25,11 @@ post('/recipes/:id/add_tag') do
   @instruction.tags.create({:description => description})
   redirect("/recipes/".concat(params.fetch("id").to_s()))
 end
+
+patch('/recipes/:id/update_rating') do
+  @instruction = Instruction.find(params.fetch('id').to_i())
+  rating = params.fetch("rating")
+  id = params.fetch("id")
+  @instruction.update({:rating => rating})
+  redirect("/recipes/".concat(params.fetch("id").to_s()))
+end

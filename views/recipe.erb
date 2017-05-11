@@ -12,7 +12,24 @@
     </div>
     <button type="submit" class="btn btn-primary">Add</button>
   </form>
-
+  <h4> You rated this a <%= @instruction.rating %></h4>
+  <form action="/recipes/<%= @instruction.id %>/update_rating" method="post">
+    <input name ="_method" type="hidden" value="patch">
+    <label for="rating">Update rating</label>
+    <select id="rating" name="rating" type='text'>
+      <option value = "1">1</option>
+      <option value = "2">2</option>
+      <option value = "3">3</option>
+      <option value = "4">4</option>
+      <option value = "5">5</option>
+      <option value = "6">6</option>
+      <option value = "7">7</option>
+      <option value = "8">8</option>
+      <option value = "9">9</option>
+      <option value = "10">10</option>
+    </select>
+    <button type="submit">Submit</button>
+  </form>
   <h3>Tags</h3>
   <ul>
     <% @instruction.tags.each() do |tag| %>
