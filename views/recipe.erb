@@ -2,7 +2,20 @@
   <a href="/">Home Page</a>
   <a href="/instructions/<%= @instruction.id %>/edit" role="button" class="btn btn-danger">Edit</a>
 
-
+  <p>Ingredients</p>
+  <ul>
+    <% @ingredients.each() do |ingredient| %>
+      <li><%= ingredient.name %></li>
+    <% end %>
+  </ul>
+  <form action="/recipes/<%= @instruction.id %>/add_ingredient" method="post">
+    <h3>Add an ingredient to <%= @instruction.description() %></h3>
+    <div class="form-group">
+      <label for="ingredient">Add ingredient</label>
+      <input id="ingredient" name="ingredient" type="text"  class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
   <form action="/recipes/<%= @instruction.id %>/add_tag" method="post">
     <h3>Add a tag for <%= @instruction.description() %></h3>
     <div class="form-group">

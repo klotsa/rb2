@@ -4,12 +4,12 @@
 <h2>These are the recipes in your Recipe Box</h2>
 <ul>
   <% @instructions.each() do |instruction| %>
-    <li><%= instruction.name %> <button class="delete" id="<%= instruction.id %>">Delete</button></li>
+    <li><%= instruction.rating %> <%= instruction.name %> <button class="delete" id="<%= instruction.id %>">Delete</button></li>
   <% end %>
 </ul>
 <% else %>
 <h4>Nothing yet! Add new recipes!</h4>
 <% end %>
 
-<button type="button" name="button"><a href="/recipes_by_rating">Sort by rating</a></button>
+
 </div>
