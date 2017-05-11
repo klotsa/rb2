@@ -1,15 +1,16 @@
 <div class="container">
-  <a href="/">Home Page</a>
-  <a href="/instructions/<%= @instruction.id %>/edit" role="button" class="btn btn-danger">Edit</a>
 
-  <h3>Ingredients</h3>
+  <button type="button" name="button"><a href="/">Home Page</a></button>
+  <button type="button" name="button"><a href="/instructions/<%= @instruction.id %>/edit" role="button">Edit a Recipe</a></button>
+
+  <h3>Ingredients of <%= @instruction.name %></h3>
   <ul>
     <% @ingredients.each() do |ingredient| %>
       <li><%= ingredient.name %> <button class="remove" id="<%= ingredient.id %>" alt="<%= @instruction.id %>">Delete</button></li>
     <% end %>
   </ul>
   <form action="/recipes/<%= @instruction.id %>/add_ingredient" method="post">
-    <h3>Add an ingredient to <%= @instruction.description() %></h3>
+    <h3>Add an ingredient to <%= @instruction.name() %></h3>
     <div class="form-group">
       <label for="ingredient">Add ingredient</label>
       <input id="ingredient" name="ingredient" type="text"  class="form-control">
@@ -17,7 +18,7 @@
     <button type="submit" class="btn btn-primary">Add</button>
   </form>
   <form action="/recipes/<%= @instruction.id %>/add_tag" method="post">
-    <h3>Add a tag for <%= @instruction.description() %></h3>
+    <h3>Add a tag for <%= @instruction.name() %></h3>
     <div class="form-group">
       <input id="instruction_id" name="instruction_id" type="hidden" value="<%= @instruction.id() %>">
       <label for="description">Tag: </label>
@@ -25,7 +26,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Add</button>
   </form>
-  <h4> You rated this a <%= @instruction.rating %></h4>
+  <h3> You rated <%= @instruction.name %> a score of<%= @instruction.rating %></h3>
   <form action="/recipes/<%= @instruction.id %>/update_rating" method="post">
     <input name ="_method" type="hidden" value="patch">
     <label for="rating">Update rating</label>

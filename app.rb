@@ -3,6 +3,11 @@ Bundler.require(:default)
 require('pry')
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
+
+#validates alphabetic input only
+
+
+
 #home page
 get('/') do
   @instructions = Instruction.all()
@@ -31,7 +36,11 @@ end
 post('/recipes') do
   new_name = params.fetch('name')
   @new_recipe = Instruction.create({:name => new_name})
-  redirect to("/recipes")
+  if @new_recipe.save()
+    redirect to("/recipes")
+  else
+    erb(:error)
+  end
 end
 
 #individual recipe
@@ -39,6 +48,19 @@ get('/recipes/:id') do
   @instruction = Instruction.find(params.fetch('id').to_i())
   @ingredients = @instruction.ingredients
   erb(:recipe)
+end
+
+#show all recipes by the tag
+get('/tags/:id') do
+  @tag = Tag.find(params.fetch('id').to_i())
+  @recipes = @tag.instructions
+  erb(:tags)
+end
+
+#list all ingredients
+get('/ingredients') do
+  @ingredients = Ingredient.all()
+  erb(:ingredients)
 end
 
 post('/recipes/:id/add_tag') do

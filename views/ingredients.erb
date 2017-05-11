@@ -1,0 +1,10 @@
+<div class="container">
+  <button type="button" name="button"><a href="/">Home</a></button>
+
+<h1>View All Ingredients</h1>
+<ul>
+  <% @ingredients.each() do |ingredient| %>
+    <li><%= ingredient.name %></li>
+    <% end %>
+  </ul>
+</div>

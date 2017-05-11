@@ -1,0 +1,9 @@
+<div class="container">
+  <button type="button" name="button"><a href="/">Home</a></button>
+<h1>View all dishes tagged as <%= @tag.description %></h1>
+<ul>
+  <% @recipes.each() do |recipe| %>
+    <li><%= recipe.name %></li>
+    <% end %>
+  </ul>
+</div>
