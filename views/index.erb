@@ -1,17 +1,17 @@
 <div class="container">
-  <button type="button" name="button"><a href="/recipes/new">Add a New Recipe</a></button>
-  <button type="button" name="button"><a href="/recipes">Edit Recipes</a></button>
-  <button type="button" name="button"><a href="/recipes_by_rating">Sort by rating</a></button>
-  <button type="button" name="button"><a href="/ingredients">View all Ingredients</a></button>
-<% if @instructions.any?() %>
-<h2>These are the recipes in your Recipe Box</h2>
+  <button type="button" name="button"><a href="/stores/new">Add a New Store</a></button>
+  <button type="button" name="button"><a href="/stores">Edit Stores</a></button>
+
+  <button type="button" name="button"><a href="/brands">View all Brands</a></button>
+<% if @stores.any?() %>
+<h2>These are the stores in your Store Box</h2>
 <ul>
-  <% @instructions.each() do |instruction| %>
-    <li><%= instruction.name %> <button class="delete" id="<%= instruction.id %>">Delete</button></li>
+  <% @stores.each() do |store| %>
+    <li><%= store.name %> <button class="delete" id="<%= store.id %>">Delete</button></li>
   <% end %>
 </ul>
 <% else %>
-<h4>Nothing yet! Add new recipes!</h4>
+<h4>Nothing yet! Add new stores!</h4>
 <% end %>
 
 

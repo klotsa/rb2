@@ -8,4 +8,11 @@ describe(Brand) do
       expect(test_brand.stores()).to(eq([test_store]))
     end
   end
+
+  describe("#stores") do
+    it("ensure name is capitalized") do
+      test_brand = Brand.create({:name => "nike"})
+      expect(test_brand.name()).to eq("Nike")
+    end
+  end
 end
