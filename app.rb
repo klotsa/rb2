@@ -48,20 +48,18 @@ get('/brands') do
   erb(:brands)
 end
 
-post('/recipes/:id/add_ingredient') do
-  @instruction = Instruction.find(params.fetch('id').to_i())
-  name = params.fetch("ingredient")
-  @instruction.ingredients.create({:name => name})
-  redirect("/recipes/".concat(params.fetch("id").to_s()))
-end
 
 #post a brand
 post('/brands/:id/add_brand') do
-  @store = Store.find(params.fetch('id').to_i())
-  name = params.fetch("brand")
-  @store.brand.create({:name => name})
-  redirect("/stores/".concat(params.fetch("id").to_s()))
+  new_name = params.fetch("brand")
+  @new_brand = Brand.new({:name => new_name})
+    if @new_ingredient.save()
+      redirect("/brands/:id")
+    else
+      erb(:error)
+    end
 end
+
 
 
 delete('/stores/:id') do
