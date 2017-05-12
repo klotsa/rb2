@@ -39,14 +39,39 @@ end
 get('/stores/:id') do
   @store = Store.find(params.fetch('id').to_i())
   @brands = @store.brands
+  #@prices = @store.prices
   erb(:store)
 end
 
+#edit a store
+get('/stores/:id/edit') do
+  @store = Store.find(params.fetch('id').to_i())
+  erb(:store_edit_form)
+end
 
+#update individual store
+patch('/stores/:id') do
+  @store = Store.find(params.fetch('id').to_i())
+  update_name = params.fetch('name')
+  @store.update({:name => update_name})
+  @stores = Store.all()
+  erb(:stores)
+end
+
+#delete individual store
+delete('/stores/:id') do
+  @store = Store.find(params.fetch('id').to_i())
+  @store.delete()
+  @stores = Store.all()
+  erb(:stores)
+end
+
+#post a brand
 post('/stores/:id/add_brand') do
   @store = Store.find(params.fetch('id').to_i())
   name = params.fetch("brand")
-  @store.brands.create({:name => name})
+  price = params.fetch("price").to_f()
+  @store.brands.create({:name => name, :price => price})
   redirect("/stores/".concat(params.fetch("id").to_s()))
 end
 
@@ -57,23 +82,22 @@ get('/brands') do
   erb(:brands)
 end
 
-#post a brand
-post('/brands/:id') do
-  new_name = params.fetch("brand")
-  @new_brand = Brand.new({:name => new_name})
-    if @new_ingredient.save()
-      redirect("/brands/")
-    else
-      erb(:error)
-    end
+#individual brand
+get('/brands/:id') do
+  @brand = Brand.find(params.fetch('id').to_i())
+  @price = @brand.price
+  erb(:brand)
+end
+
+#delete brand
+delete "/brands/:id" do
+  @brand = Brand.find(params.fetch('id').to_i())
+  @brand.delete()
+  @brands = Brand.all()
+  erb(:brands)
 end
 
 
-
-delete('/stores/:id') do
-  @stores = Store.find(params.fetch('id').to_i())
-  @store.delete()
-end
 
 
 delete('/stores/:id/remove_from_store/:brand_id') do

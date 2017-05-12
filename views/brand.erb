@@ -1,0 +1,10 @@
+
+<div class = "container">
+  <h3>Info about the brand</h3>
+  <h5><%= @brand.name %> brand shoes cost $ <%= @brand.price %> </h5>
+  <form action="/brands/<%= @brand.id() %>" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <button type="submit" class="btn btn-danger mt-3">Delete</button>
+    </div>
+  </form>
+</div>

@@ -1,6 +1,6 @@
 class Brand < ActiveRecord::Base
   has_and_belongs_to_many(:stores)
-  validates :name, :presence => true, :uniqueness => true
+  validates :name, :price, :numericality => true, :presence => true, :uniqueness => true 
   before_save(:uppercase_words)
 
 #  validates :name, {:presence => true, format: { with: /\A[a-zA-Z]+\z/}}

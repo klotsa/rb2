@@ -8,8 +8,8 @@
 <h2>These are the your stores</h2>
 <ul>
   <% @stores.each() do |store| %>
-    <li><%= store.name %> <button class="delete" id="<%= store.id %>">Delete</button></li>
-  <% end %>
+     <li><%= store.name %></li>
+   <% end %>
 </ul>
 <% else %>
 <h4>Nothing yet! Add new stores!</h4>

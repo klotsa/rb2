@@ -1,0 +1,19 @@
+
+<div class="container">
+
+  <form action="/stores/<%= @store.id() %>" method="post">
+    <input name="_method" type="hidden" value="patch">
+    <div class="form-group">
+      <label for="name"><b>Rename a store: </b></label>
+      <input id="name" name="name" type="text"  class="form-control">
+    </div>
+    <button type="submit" class="btn btn-success">Update</button>
+  </form>
+
+  <form action="/stores/<%= @store.id() %>" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <button type="submit" class="btn btn-danger mt-3">Delete</button>
+    </div>
+  </form>
+
+</div>

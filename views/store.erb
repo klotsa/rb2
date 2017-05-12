@@ -1,19 +1,22 @@
 <div class="container">
 
   <button type="button" name="button"><a href="/">Home Page</a></button>
-  <button type="button" name="button"><a href="/stores/<%= @store.id %>/edit" role="button">Rename a Store</a></button>
+  <button type="button" name="button"><a href="/stores/<%= @store.id %>/edit" role="button">Edit a Store</a></button>
+  <button type="button" name="button"><a href="/brands">View all brands</a></button>
 
   <h3>Brands of <%= @store.name %></h3>
   <ul>
     <% @brands.each() do |brand| %>
-      <li><%= brand.name %> <button class="remove" id="<%= brand.id %>" alt="<%= @store.id %>">Delete</button></li>
+      <li><%= brand.name %> </li>
     <% end %>
   </ul>
   <form action="/stores/<%= @store.id %>/add_brand" method="post">
-    <h3>Add an brand to <%= @store.name() %></h3>
+    <h3>Add a brand to <%= @store.name() %></h3>
     <div class="form-group">
       <label for="brand">Add brand</label>
       <input id="brand" name="brand" type="text"  class="form-control">
+      <label for="price">Add price $</label>
+      <input id="price" name="price" type="number"  class="form-control">
     </div>
     <button type="submit" class="btn btn-primary">Add</button>
   </form>
