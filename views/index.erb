@@ -1,10 +1,11 @@
 <div class="container">
+  <button type="button" name="button"><a href="/">Home</a></button>
   <button type="button" name="button"><a href="/stores/new">Add a New Store</a></button>
   <button type="button" name="button"><a href="/stores">Edit Stores</a></button>
 
   <button type="button" name="button"><a href="/brands">View all Brands</a></button>
 <% if @stores.any?() %>
-<h2>These are the stores in your Store Box</h2>
+<h2>These are the your stores</h2>
 <ul>
   <% @stores.each() do |store| %>
     <li><%= store.name %> <button class="delete" id="<%= store.id %>">Delete</button></li>

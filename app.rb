@@ -42,19 +42,27 @@ get('/stores/:id') do
   erb(:store)
 end
 
+
+post('/stores/:id/add_brand') do
+  @store = Store.find(params.fetch('id').to_i())
+  name = params.fetch("brand")
+  @store.brands.create({:name => name})
+  redirect("/stores/".concat(params.fetch("id").to_s()))
+end
+
+
 #list all brands
 get('/brands') do
   @brands = Brand.all()
   erb(:brands)
 end
 
-
 #post a brand
-post('/brands/:id/add_brand') do
+post('/brands/:id') do
   new_name = params.fetch("brand")
   @new_brand = Brand.new({:name => new_name})
     if @new_ingredient.save()
-      redirect("/brands/:id")
+      redirect("/brands/")
     else
       erb(:error)
     end
